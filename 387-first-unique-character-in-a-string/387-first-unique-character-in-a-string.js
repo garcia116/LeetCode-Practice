@@ -3,14 +3,14 @@
  * @return {number}
  */
 var firstUniqChar = function(s) {
-    let obj = {}
+    let map = new Map()
     for(let i of s){
-        (obj[i]) ? obj[i]+=1 : obj[i] = 1
+        (map.has(i)) ? map.set(i, map.get(i) + 1) : map.set(i, 1)    
     }
-  //  console.log(obj)
-    for(let i in obj){
-        console.log(i)
-        if(obj[i] === 1) return s.indexOf(i)
+  //  console.log(map)
+    for(let i of map.keys()){
+        console.log(map.get(i))
+        if(map.get(i) === 1) return s.indexOf(i)
     }
     
     return -1
