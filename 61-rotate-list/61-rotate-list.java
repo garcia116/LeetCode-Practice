@@ -20,7 +20,7 @@ class Solution {
             tail = tail.next;
         }
         k %= length;
-        if(k == 0){
+        if(k==0){
             return head;
         }
         tail.next = head;
@@ -30,7 +30,7 @@ class Solution {
         }
         head = tail.next;
         tail.next = null;
-        return head;
         
+        return head;
     }
 }
