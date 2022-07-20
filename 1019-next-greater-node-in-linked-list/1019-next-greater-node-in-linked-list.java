@@ -16,10 +16,10 @@ class Solution {
             list.add(temp.val);
             temp = temp.next;
         }
-        
         int[] result = new int[list.size()];
         Stack<Integer> stack = new Stack<>();
-        for(int i = list.size()-1; i >= 0; i--){
+        
+        for(int i = list.size()-1; i>=0; i--){
             while(!stack.isEmpty() && list.get(i) >= stack.peek()){
                 stack.pop();
             }
@@ -27,7 +27,7 @@ class Solution {
                 result[i] = 0;
             }
             else{
-                result[i] = stack.peek();             
+                result[i] = stack.peek();
             }
             stack.push(list.get(i));
         }
