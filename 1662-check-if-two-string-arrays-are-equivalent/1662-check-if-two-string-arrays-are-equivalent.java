@@ -9,6 +9,6 @@ class Solution {
         for(String b : word2){
             s2.append(b);
         }
-        return (s1.toString().compareTo(s2.toString()) == 0) ? true : false;
+        return s1.toString().equals(s2.toString());
     }
 }
