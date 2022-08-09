@@ -19,7 +19,6 @@ class Solution {
             current.next = prev;
             prev = current;
             current = next;
-            
         }
         
         return prev;
