@@ -10,53 +10,44 @@
  */
 class Solution {
     public boolean isPalindrome(ListNode head) {
-        ListNode fast = head;
-        ListNode slow = head;
+        ListNode firstHalfEnd = findHalf(head);
+        ListNode secondHalfStart = reverseList(firstHalfEnd.next);
         
-        while(fast.next != null && fast.next.next != null){
-            slow = slow.next;
-            fast = fast.next.next;
-        }
-        
-        ListNode firstHalf = slow;
-        ListNode secondHalf = reverseList(firstHalf.next);
- 
         ListNode p1 = head;
-        ListNode p2 = secondHalf;
+        ListNode p2 = secondHalfStart;
         
         while(p2 != null){
-            if(p1.val != p2.val){
+            if(p2.val != p1.val){
                 return false;
             }
-            else{
-                p1 = p1.next;
-                p2 = p2.next;
-            }
+            p2 = p2.next;
+            p1 = p1.next;
         }
-        
         return true;
+        
     }
     
+    public ListNode findHalf(ListNode head){
+        ListNode fast = head;
+        ListNode slow = head;
+        while(fast.next != null && fast.next.next != null){
+            fast = fast.next.next;
+            slow = slow.next;
+        }
+        return slow;
+    }
     public ListNode reverseList(ListNode head){
         ListNode prev = null;
-        ListNode current = head;
+        ListNode curr = head;
         ListNode next = null;
         
-        while(current != null){
-            next = current.next;
-            current.next = prev;
-            prev = current;
-            current = next;
+        while(curr != null){
+            next = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = next;
         }
         return prev;
     }
-    
-    void Print(ListNode head) {
-    ListNode cur = head;
-    while(cur!=null){
-        System.out.println(cur.val);
-        cur = cur.next;
-    }
-  
-}
+
 }
