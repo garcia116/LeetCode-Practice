@@ -12,11 +12,8 @@ class Solution {
                 stack.push(s.charAt(i));
             }
             else{
-                if(stack.peek() != map.get(s.charAt(i))){
+                if(stack.pop() != map.get(s.charAt(i))){
                     return false;
-                }
-                else{
-                    stack.pop();
                 }
             }
         }
